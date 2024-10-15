@@ -123,7 +123,7 @@ app.get("/",(req,res)=>{
     
  })
  
-app.listen(8181, function (erro) { 
+app.listen(8181,'172.31.9.2', function (erro) { 
    if (erro) { 
        console.log("Erro"); 
    } else { 
