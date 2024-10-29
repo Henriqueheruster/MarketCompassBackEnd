@@ -10,7 +10,6 @@ const mercadoModel = require('./database/mercados')
 
 const produtoModel = require('./database/produto')
 
-const produtoMercadoModel = require('./database/ProdutosMercado')
 
 const { where } = require("sequelize");
 const { raw } = require("mysql2");

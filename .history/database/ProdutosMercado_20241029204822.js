@@ -5,13 +5,6 @@ const mercado = require('./mercados')
 
 const ProdutosMercado = connection.define('ProdutosMercado',{}, {timestamps: false}) 
 
-
-
-produtos.belongsToMany(mercado,{through:ProdutosMercado})
-mercado.belongsToMany(produtos,{through:ProdutosMercado})
-
-ProdutosMercado.sync({force:true}).then(()=>{
-    console.log("Tabela de ProdutosMercado criada!")
-})
+produto.belongsToMany(mercado,{through:ProdutosMercado})
 
 module.exports = ProdutosMercado
