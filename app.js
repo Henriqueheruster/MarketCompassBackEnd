@@ -8,6 +8,10 @@ const connection = require('./database/database')
 
 const mercadoModel = require('./database/mercados')
 
+const produtoModel = require('./database/produto')
+
+const ProdutosMercado = require('./database/ProdutosMercado')
+
 const { where } = require("sequelize");
 const { raw } = require("mysql2");
 
@@ -123,7 +127,7 @@ app.get("/",(req,res)=>{
     
  })
  
-app.listen(8181,'172.31.9.2', function (erro) { 
+app.listen(8181, function (erro) { 
    if (erro) { 
        console.log("Erro"); 
    } else { 
