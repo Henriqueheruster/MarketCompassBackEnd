@@ -96,8 +96,8 @@ app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) 
         img:img
 
     }).then(()=>{
-        
-        res.redirect('/')
+        alert("Cadastro realizado com sucesso")
+        res.redirect('/cadProdutos/')
     }).catch((error) => {
         console.error(error);
         res.status(500).send("Erro ao criar produto");

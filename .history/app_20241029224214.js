@@ -97,7 +97,7 @@ app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) 
 
     }).then(()=>{
         
-        res.redirect('/')
+        res.redirect('/cadProdutos/')
     }).catch((error) => {
         console.error(error);
         res.status(500).send("Erro ao criar produto");

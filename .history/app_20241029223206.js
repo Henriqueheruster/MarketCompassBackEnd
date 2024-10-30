@@ -90,13 +90,14 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
 app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) { 
     var nome = req.body.nome
     var img = req.file.path.replace("public", "")
+    console.log(img)
     
     produtoModel.create({
         nome: nome,
         img:img
 
     }).then(()=>{
-        
+        alert("Cadastro realizado!")
         res.redirect('/')
     }).catch((error) => {
         console.error(error);

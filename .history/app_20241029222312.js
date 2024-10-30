@@ -62,13 +62,6 @@ app.get("/cadmercado", function (req, res) {
     res.render("cadMercado"); 
 }); 
 
-app.get("/addProdutosMercado/:id", function (req, res) {     
-    let idMercado = req.params.id
-        res.render("addProdutosMercado",{
-            idMercado :idMercado
-        });        
-}); 
-
 app.post("/submitMercado", upload.single('img'), function (req, res, next) { 
     var nome = req.body.nome
     var img = req.file.path.replace("public", "")
@@ -90,14 +83,15 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
 app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) { 
     var nome = req.body.nome
     var img = req.file.path.replace("public", "")
+    console.log(img)
     
     produtoModel.create({
         nome: nome,
         img:img
 
     }).then(()=>{
+        console.log("Cadastro realizado!")
         
-        res.redirect('/')
     }).catch((error) => {
         console.error(error);
         res.status(500).send("Erro ao criar produto");
@@ -145,13 +139,6 @@ app.get("/mercadosJson",(req,res)=>{
         res.send(mercado)
     })
 })
-
-app.get("/produtosJson",(req,res)=>{
-    produtoModel.findAll({raw:true}).then(produto => {
-        res.send(produto)
-    })
-})
-
 
 app.get("/",(req,res)=>{
      
