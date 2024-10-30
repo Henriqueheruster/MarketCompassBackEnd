@@ -20,7 +20,7 @@ const mercados = connection.define('mercados',{
     }
 })
 
-mercados.sync({force:false}).then(()=>{
+mercados.sync({force:true}).then(()=>{
     console.log("Tabela de mercados criada!")
 })
 

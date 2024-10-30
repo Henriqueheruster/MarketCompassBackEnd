@@ -1,13 +1,13 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
 
-const mercados = connection.define('mercados',{
-    IDMercado:{
+const produtos = connection.define('produto',{
+    IDProduto:{
         type:sequelize.INTEGER,
         allowNull:false,
         primaryKey: true,
         autoIncrement: true
-    }, 
+    },    
     nome:{
         type: sequelize.STRING,
         allowNull: false
@@ -19,9 +19,9 @@ const mercados = connection.define('mercados',{
         allowNull: true
     }
 })
-
-mercados.sync({force:false}).then(()=>{
-    console.log("Tabela de mercados criada!")
+ 
+produtos.sync({force:true}).then(()=>{
+    console.log("Tabela de produtos criada!")
 })
 
-module.exports = mercados
+module.exports = produtos
