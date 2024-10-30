@@ -10,7 +10,7 @@ const ProdutosMercado = connection.define('ProdutosMercado',{}, {timestamps: fal
 produtos.belongsToMany(mercado,{through:ProdutosMercado})
 mercado.belongsToMany(produtos,{through:ProdutosMercado})
 
-ProdutosMercado.sync({force:true}).then(()=>{
+ProdutosMercado.sync({force:false}).then(()=>{
     console.log("Tabela de ProdutosMercado criada!")
 })
 

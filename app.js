@@ -54,9 +54,11 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 
 
-
-app.get("/cadProdutos/:id", function (req, res) { 
-    res.render("cadProdutos"); 
+app.get("/cadProdutos/:IDMercado", function (req, res) { 
+    let IDMercado = req.params.IDMercado
+    res.render("cadProdutos",{
+        IDMercado:IDMercado
+    }); 
 }); 
 
 app.get("/cadmercado", function (req, res) { 
@@ -77,6 +79,25 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
     }).catch((error) => {
         console.error(error);
         res.status(500).send("Erro ao criar mercado");
+    });
+
+});
+
+app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) { 
+    var nome = req.body.nome
+    var img = req.file.path.replace("public", "")
+    console.log(img)
+    
+    produtoModel.create({
+        nome: nome,
+        img:img
+
+    }).then(()=>{
+        console.log("Cadastro realizado!")
+        
+    }).catch((error) => {
+        console.error(error);
+        res.status(500).send("Erro ao criar produto");
     });
 
 });

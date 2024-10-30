@@ -1,13 +1,7 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
 
-const produtos = connection.define('produto',{
-    IDProduto:{
-        type:sequelize.INTEGER,
-        allowNull:false,
-        primaryKey: true,
-        autoIncrement: true
-    },    
+const produtos = connection.define('produto',{       
     nome:{
         type: sequelize.STRING,
         allowNull: false
