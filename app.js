@@ -54,11 +54,8 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 
 
-app.get("/cadProdutos/:IDMercado", function (req, res) { 
-    let IDMercado = req.params.IDMercado
-    res.render("cadProdutos",{
-        IDMercado:IDMercado
-    }); 
+app.get("/cadProdutos/", function (req, res) {     
+    res.render("cadProdutos");        
 }); 
 
 app.get("/cadmercado", function (req, res) { 
