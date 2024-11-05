@@ -2,10 +2,15 @@ const sequelize = require('sequelize')
 const connection = require('./database')
 
 const mercados = connection.define('mercados',{
-     
+    id:{
+        type: sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true        
+    }, 
     nome:{
         type: sequelize.STRING,
-        allowNull: false
+        allowNull: false,
         //primaryKey: true,
         //autoIncrement: true
     },

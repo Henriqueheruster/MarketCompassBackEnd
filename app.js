@@ -12,6 +12,8 @@ const produtoModel = require('./database/produto')
 
 const produtoMercadoModel = require('./database/ProdutosMercado')
 
+const localizacaoModel = require('./database/localizacao')
+
 const { where } = require("sequelize");
 const { raw } = require("mysql2");
 
