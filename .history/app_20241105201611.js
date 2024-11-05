@@ -16,7 +16,6 @@ const localizacaoModel = require('./database/localizacao')
 
 const { where } = require("sequelize");
 const { raw } = require("mysql2");
-const { error } = require("console");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -67,10 +66,10 @@ app.get("/cadmercado", function (req, res) {
 
 app.get("/addProdutosMercado/:id", function (req, res) {     
     let idMercado = req.params.id
-    produtoModel.findAll({raw:true}).then(produtos => {
+    produtoModel.findAll({raw:true}).then(produto => {
     res.render("addProdutosMercado",{
             idMercado :idMercado,
-            produtos: produtos
+            produtos: produto
         });     
     })   
 }); 
@@ -92,31 +91,6 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
     });
 
 });
-
-app.post("/localizacao", function(req, res,){
-    let produtoId = req.body.produtoId
-    let mercadoId = req.body.mercadoId
-    let latitude = req.params.latitude
-    let longitude = req.params.longitude
-
-    localizacaoModel.create({
-        produtoId: produtoId,
-        mercadoId: mercadoId,
-        latitude: latitude,
-        longitude: longitude
-    }).then(()=>{
-        console.log("cadastro de localizacao concluido")
-    }).catch((error)=>{
-        console.error(error);
-        res.status(500).send("Erro ao criar localizacao");
-    })
-})
-
-app.get("/localizacaoJson",(req,res)=>{
-    produtoModel.findAll({raw:true}).then(produto => {
-        res.send(produto)
-    })
-})
 
 app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) { 
     var nome = req.body.nome
@@ -171,7 +145,6 @@ app.get("/excluirMercado/:id",(req,res)=>{
        res.redirect('back')
     })
 })
-
 app.get("/mercadosJson",(req,res)=>{
     mercadoModel.findAll({raw:true}).then(mercado => {
         res.send(mercado)
