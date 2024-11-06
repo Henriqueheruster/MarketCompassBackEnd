@@ -9,13 +9,15 @@
             <hr>
             <div class="card-body">
                 <form method="post" action="/submitProdutosMercado" enctype ="multipart/form-data" >
-                   
+                    <div>
                         <strong>Cheque os produtos deste mercado</strong>
                         <% produtos.forEach(produto => { %>
-                                <label><%=produto.nome%></label>
-                                <input type="checkbox" name="checkbox-produto-<%=produto.nome%>" value="<%=produto.id%>" >
+                            <div>
+                                <label for="id-produto-<%=produto.nome%>"><%=produto.nome%></label>
+                                <input type="checkbox"  id="id-produto-<%=produto.nome%>" value="<%=produto.id%>">
+                            </div>
                         <%})%>
-               
+                    </div>
                     <button type="submit" class="btn btn-success">&crarr; Cadastrar</button>
                     <a class="btn btn-success" href="/">&larr; Voltar</a>
                 </form>

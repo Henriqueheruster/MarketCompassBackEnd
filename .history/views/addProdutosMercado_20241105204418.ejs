@@ -12,8 +12,10 @@
                    
                         <strong>Cheque os produtos deste mercado</strong>
                         <% produtos.forEach(produto => { %>
-                                <label><%=produto.nome%></label>
-                                <input type="checkbox" name="checkbox-produto-<%=produto.nome%>" value="<%=produto.id%>" >
+                            <div>
+                                <label for="id-produto-<%=produto.nome%>"><%=produto.nome%></label>
+                                <input type="checkbox"  id="id-produto-<%=produto.nome%>" value="<%=produto.id%>">
+                            </div>
                         <%})%>
                
                     <button type="submit" class="btn btn-success">&crarr; Cadastrar</button>

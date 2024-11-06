@@ -75,13 +75,6 @@ app.get("/addProdutosMercado/:id", function (req, res) {
     })   
 }); 
 
-app.get("/produtosMercado",(req,res)=>{
-    produtoMercadoModel.findAll({raw:true}).then(produtomercado => {
-        res.send(produtomercado)
-    })
-})
-
-
 app.post("/submitMercado", upload.single('img'), function (req, res, next) { 
     var nome = req.body.nome
     var img = req.file.path.replace("public", "")
@@ -101,7 +94,7 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
 });
 
 app.post("/submitProdutosMercado", function (req, res) { 
-    console.log(req.body)
+    console.log(req)
 });
 
 app.post("/localizacao", function(req, res,){
@@ -189,7 +182,7 @@ app.get("/mercadosJson",(req,res)=>{
     })
 })
 
-app.get("/produtosJson/",(req,res)=>{
+app.get("/produtosJson",(req,res)=>{
     produtoModel.findAll({raw:true}).then(produto => {
         res.send(produto)
     })
