@@ -8,19 +8,14 @@
             </div>
             <hr>
             <div class="card-body">
-                <form method="post" action="/submitProdutosMercado" enctype ="application/x-www-form-urlencoded" id="formulario">
+                <form method="post" action="/submitProdutosMercado" enctype ="multipart/form-data" id="formulario">
                    <strong>Marque os produtos do mercado</strong>
-                  
                     <%produtos.forEach((p,i)=>{%>
-                        <div>
-                            <label for=""><%=p.nome%></label>
-                            <input type="checkbox" name="produto_<%=i%>" id="<%=p.id%>">
-                        </div>
+                        <label for=""><%=p.nome%></label>
+                        <input type="checkbox" name="produto_<%=i%>" id="<%=p.id%>">
                     <%})%>
-                    <input  name="produtosMarcados" type="hidden" id="produtosMarcados">
-                    <input  name="mercadoId" type="hidden" id="mercadoId" value="<%=idMercado%>">
-
-
+                    <input type="text" name="produtosMarcados" id="produtosMarcados">
+               
                     <button type="submit" class="btn btn-success">&crarr; Cadastrar</button>
                     <a class="btn btn-success" href="/">&larr; Voltar</a>
                 </form>
@@ -32,16 +27,10 @@
             const chkbxs = document.querySelectorAll("input[name^=produto_]")
             const arry_temp = Array()
             chkbxs.forEach((i)=>{
-                if (i.checked) arry_temp.push(i.id);
+                arry_temp.push(i.id)
             })
             return arry_temp.toString() 
         }
-        const chkbxs = document.querySelectorAll("input[name^=produto_]")
-        chkbxs.forEach((i)=>{
-            i.addEventListener("change", (e)=>{
-                document.getElementById("produtosMarcados").value = atualizarProdutosMarcados()
-            })
-        })
         document.getElementById("formulario").addEventListener("submit",(e)=>{
             document.getElementById("produtosMarcados").value = atualizarProdutosMarcados()
         })

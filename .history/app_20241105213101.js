@@ -101,30 +101,13 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
 });
 
 app.post("/submitProdutosMercado", function (req, res) { 
-    let ids_prdutos = req.body.produtosMarcados.split(",")
-    let id_do_mercado = req.body.mercadoId
-   
-    ids_prdutos.forEach(produtoId => {
-        produtoMercadoModel.create({
-            produtoId: produtoId,
-            mercadoId :id_do_mercado
-        }).then(()=>{
-            
-            
-        }).catch((error) => {
-            console.error(error);
-            res.status(500).send("Erro ao adicionar os produtos");
-        });
-    });
-    
-  res.redirect("/")
+    console.log(req.body)
 });
 
 app.post("/localizacao", function(req, res,){
     let produtoId = req.body.produtoId
     let mercadoId = req.body.mercadoId
-    let latitude = req.para
-    ms.latitude
+    let latitude = req.params.latitude
     let longitude = req.params.longitude
 
     localizacaoModel.create({
@@ -149,7 +132,7 @@ app.get("/localizacaoJson",(req,res)=>{
 app.post("/submitProdutos", upload.single('imgProd'), function (req, res, next) { 
     var nome = req.body.nome
     var img = req.file != undefined? req.file.path.replace("public", ""):null
-    
+    console.log(req.body)
     produtoModel.create({
         nome: nome,
         img:img

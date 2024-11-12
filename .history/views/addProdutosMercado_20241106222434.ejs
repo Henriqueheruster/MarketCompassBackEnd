@@ -8,19 +8,14 @@
             </div>
             <hr>
             <div class="card-body">
-                <form method="post" action="/submitProdutosMercado" enctype ="application/x-www-form-urlencoded" id="formulario">
-                   <strong>Marque os produtos do mercado</strong>
-                  
-                    <%produtos.forEach((p,i)=>{%>
-                        <div>
-                            <label for=""><%=p.nome%></label>
-                            <input type="checkbox" name="produto_<%=i%>" id="<%=p.id%>">
-                        </div>
-                    <%})%>
-                    <input  name="produtosMarcados" type="hidden" id="produtosMarcados">
-                    <input  name="mercadoId" type="hidden" id="mercadoId" value="<%=idMercado%>">
-
-
+                <form method="post" action="/submitProdutosMercado" enctype ="multipart/form-data" id="formulario">
+                    
+                    <label for="" class="label">Nome do mercado</label>
+                    <input name="nome" type="text" class="form-control input-title" placeholder="Nome"  required>
+                    <br>
+                    <input name="img" type="file" class="form-control input-file">Adionar ficheiro</input>
+                    <br>
+                    <br>
                     <button type="submit" class="btn btn-success">&crarr; Cadastrar</button>
                     <a class="btn btn-success" href="/">&larr; Voltar</a>
                 </form>

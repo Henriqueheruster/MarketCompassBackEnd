@@ -117,7 +117,7 @@ app.post("/submitProdutosMercado", function (req, res) {
         });
     });
     
-  res.redirect("/")
+  
 });
 
 app.post("/localizacao", function(req, res,){

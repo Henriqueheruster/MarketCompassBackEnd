@@ -101,23 +101,20 @@ app.post("/submitMercado", upload.single('img'), function (req, res, next) {
 });
 
 app.post("/submitProdutosMercado", function (req, res) { 
-    let ids_prdutos = req.body.produtosMarcados.split(",")
-    let id_do_mercado = req.body.mercadoId
+    var nome = req.body.nome
+    var img = req.file.path.replace("public", "")
    
-    ids_prdutos.forEach(produtoId => {
-        produtoMercadoModel.create({
-            produtoId: produtoId,
-            mercadoId :id_do_mercado
-        }).then(()=>{
-            
-            
-        }).catch((error) => {
-            console.error(error);
-            res.status(500).send("Erro ao adicionar os produtos");
-        });
+    produtoMercadoModel.create({
+        nome: nome,
+        img:img
+    }).then(()=>{
+        
+        
+    }).catch((error) => {
+        console.error(error);
+        res.status(500).send("Erro ao adicionar os produtos");
     });
-    
-  res.redirect("/")
+  
 });
 
 app.post("/localizacao", function(req, res,){

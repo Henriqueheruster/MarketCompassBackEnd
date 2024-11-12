@@ -104,10 +104,10 @@ app.post("/submitProdutosMercado", function (req, res) {
     let ids_prdutos = req.body.produtosMarcados.split(",")
     let id_do_mercado = req.body.mercadoId
    
-    ids_prdutos.forEach(produtoId => {
+    ids_prdutos.forEach(element => {
         produtoMercadoModel.create({
-            produtoId: produtoId,
-            mercadoId :id_do_mercado
+            nome: nome,
+            img:img
         }).then(()=>{
             
             
@@ -117,7 +117,7 @@ app.post("/submitProdutosMercado", function (req, res) {
         });
     });
     
-  res.redirect("/")
+  
 });
 
 app.post("/localizacao", function(req, res,){

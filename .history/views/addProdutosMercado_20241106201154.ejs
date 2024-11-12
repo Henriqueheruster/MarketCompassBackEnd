@@ -1,0 +1,29 @@
+<%- include ('partials/header.ejs') %>
+<body class="principal">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container p-4">
+        <div class="card card-style">
+            <div class="card-header">
+                <h3 class="titulo">Cadastro de Produtos do Mercado</h3>
+            </div>
+            <hr>
+            <div class="card-body">
+                <form method="post" action="/submitProdutosMercado" enctype ="multipart/form-data" id="formulario">
+                   <strong>Marque os produtos do mercado</strong>
+                    <%produtos.forEach((p)=>{%>
+                        <label for=""><%=p.nome%></label>
+                        <input type="checkbox" name="<%=p.nome%>" id="<%=p.id%>">
+                    <%})%>
+                    <input type="hidden" name="produtosMarcados">
+               
+                    <button type="submit" class="btn btn-success">&crarr; Cadastrar</button>
+                    <a class="btn btn-success" href="/">&larr; Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+<%- include ('partials/footer.ejs') %>
