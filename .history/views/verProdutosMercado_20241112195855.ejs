@@ -1,0 +1,22 @@
+<%- include ('partials/header.ejs') %>
+<body class="principal">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container p-4">
+        <div class="card card-style">
+            <div class="card-header">
+                <h3 class="titulo">Ver Produtos Mercado</h3>
+            </div>
+            <hr>
+            <div class="card-body">
+                <%produtos.forEach((p,i)=>{%>
+                    <div>
+                        <h4><%=p.nome%></h4>
+                        <img src="<%=p.img%>" alt="">
+                        <a class="btn btn-danger" href="/deletarProdMercado/<%=mercadoId%>/<%=p.id%>">Deletar</a>
+                    </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include ('partials/footer.ejs') %>
