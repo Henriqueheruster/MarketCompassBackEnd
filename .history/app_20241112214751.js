@@ -128,8 +128,7 @@ app.get("/verProdutosMercado/:id", (req,res)=>{
        }]}).then(produto=>{
         console.log(produto)
         res.render("verProdutosMercado",{
-            produtos :produto,
-            mercadoId: id
+            produtos :produto
         })
     })
 

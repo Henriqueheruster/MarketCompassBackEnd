@@ -128,14 +128,13 @@ app.get("/verProdutosMercado/:id", (req,res)=>{
        }]}).then(produto=>{
         console.log(produto)
         res.render("verProdutosMercado",{
-            produtos :produto,
-            mercadoId: id
+            idMercado :req.params.id,
+            produto :produto
         })
     })
 
     
 })
-
 
 
 app.post("/localizacao", function(req, res,){
@@ -203,21 +202,6 @@ app.post("/submitEditar", async (req, res)=>{
         res.redirect('/')
     })
 
-})
-
-
-
-app.get("/deletarProdMercado/:idMercado/:idProduto",(req,res)=>{
-    let idMercado = req.params.idMercado
-    let idProduto = req.params.idProduto
-    produtoMercadoModel.destroy({
-       where: {
-          mercadoId:idMercado,
-          produtoId :idProduto
-       }
-    }).then(()=>{
-       res.redirect('back')
-    })
 })
 
 

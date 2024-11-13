@@ -8,17 +8,13 @@
             </div>
             <hr>
             <div class="card-body">
-                <a class="btn btn-success" href="/">&larr; Voltar</a>
                 <%produtos.forEach((p,i)=>{%>
-                    <div class="card">
-                        <div class="card-body">
-                            <h4><%=p.nome%></h4>
-                            <img src="<%=p.img%>" alt="">
-                            <a class="btn btn-danger" href="/deletarProdMercado/<%=mercadoId%>/<%=p.id%>">Deletar</a>
-                        </div>
+                    <div>
+                        <h4><%=p.nome%></h4>
+
+                        <a class="btn btn-danger" href="/deletarProdMercado/<%=mercadoId%>/<%=p.id%>">Deletar</a>
                     </div>
                 <%})%>
-                <a class="btn btn-success" href="/">&larr; Voltar</a>
             </div>
         </div>
     </div>

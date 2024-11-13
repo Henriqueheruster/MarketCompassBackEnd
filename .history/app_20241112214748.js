@@ -128,8 +128,7 @@ app.get("/verProdutosMercado/:id", (req,res)=>{
        }]}).then(produto=>{
         console.log(produto)
         res.render("verProdutosMercado",{
-            produtos :produto,
-            mercadoId: id
+            produtos :produto
         })
     })
 
@@ -213,7 +212,7 @@ app.get("/deletarProdMercado/:idMercado/:idProduto",(req,res)=>{
     produtoMercadoModel.destroy({
        where: {
           mercadoId:idMercado,
-          produtoId :idProduto
+          produtoId :idProduto,
        }
     }).then(()=>{
        res.redirect('back')
